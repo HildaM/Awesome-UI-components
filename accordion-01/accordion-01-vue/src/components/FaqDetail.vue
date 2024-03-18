@@ -24,9 +24,13 @@ watch(isOpen, (newVal) => {
 })
 
 function toggleDetail(event) {
-    event.preventDefault()
-    isOpen.value = !isOpen.value
+    // 阻止事件的默认行为
+    event.preventDefault();
+
+    // 切换 isOpen 的值，如果 isOpen 是 true，那么将其设置为 false，反之亦然
+    isOpen.value = !isOpen.value;
 }
+
 
 onMounted(() => {
     content.value.style.display = 'none'
@@ -35,55 +39,64 @@ onMounted(() => {
 
 
 function expand() {
-    // 先将display设置为block，然后立即计算contentHeight
+    // 设置 content 的样式为 block，使其可见，但透明度为 0，使其看起来是隐藏的
     content.value.style.display = 'block';
-    content.value.style.opacity = '0';  // 设置初始透明度为0
+    content.value.style.opacity = '0';
+
+    // 获取 summary 和 content 的高度
     const summaryHeight = summary.value.offsetHeight;
     const contentHeight = content.value.offsetHeight;
-    // 计算完contentHeight后，立即将display设置回none
-    content.value.style.display = 'none';
-    
-    const endHeight = `${summaryHeight + contentHeight}px`
 
+    // 再次将 content 设置为隐藏
+    content.value.style.display = 'none';
+
+    // 计算最终的高度（summary 的高度加上 content 的高度）
+    const endHeight = `${summaryHeight + contentHeight}px`;
+
+    // 创建一个动画，使 detail 的高度从 summary 的高度逐渐增加到最终的高度
     detail.value.animate([
         { height: `${summaryHeight}px` },
         { height: endHeight }
     ], {
-        duration: 350,
-        easing: 'ease-out',
-        fill: 'forwards'
+        duration: 350,  // 动画持续 350 毫秒
+        easing: 'ease-out',  // 使用 ease-out 缓动函数
+        fill: 'forwards'  // 动画结束后保持最后一帧的样式
     }).onfinish = () => {
-        // 在动画完成后设置display为block
-        content.value.style.display = 'block'
-    }
+        // 动画结束后，将 content 设置为可见
+        content.value.style.display = 'block';
+    };
 
-    // 添加一个新的动画，逐渐改变faq-content的opacity
+    // 创建另一个动画，使 content 的透明度从 0 逐渐增加到 1
     content.value.animate([
         { opacity: '0' },
         { opacity: '1' }
     ], {
-        duration: 350,
-        easing: 'ease-out',
-        fill: 'forwards'
+        duration: 350,  // 动画持续 350 毫秒
+        easing: 'ease-out',  // 使用 ease-out 缓动函数
+        fill: 'forwards'  // 动画结束后保持最后一帧的样式
     });
 }
 
 function shrink() {
+    // 获取 summary 元素的高度
     const summaryHeight = summary.value.offsetHeight;
-    
+
+    // 创建一个动画，使 detail 元素的高度从当前高度逐渐减小到 summary 元素的高度
     const animation = detail.value.animate([
         { height: `${detail.value.offsetHeight}px` },
         { height: `${summaryHeight}px` }
     ], {
-        duration: 400,
-        easing: 'ease-out',
-        fill: 'forwards'
+        duration: 400,  // 动画持续 400 毫秒
+        easing: 'ease-out',  // 使用 ease-out 缓动函数
+        fill: 'forwards'  // 动画结束后保持最后一帧的样式
     });
 
+    // 动画结束后，将 content 元素隐藏
     animation.onfinish = () => {
         content.value.style.display = 'none';
     };
 }
+
 
 </script>
 
