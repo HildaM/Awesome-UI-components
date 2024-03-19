@@ -1,0 +1,23 @@
+:root {
+	--white: #FFF;
+	--background: #060D23;
+	--background-hover: #383D4F;
+	--primary-blue: #00E0FE;
+	--blue-gray: #f4fcff;
+  }
+  
+  html {
+	font-size: 16px;
+	font-family: "Mulish", sans-serif;
+  }
+  
+  body {
+	height: 100%;
+	background-color: var(--blue-gray);
+  }
+  
+  * {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+  }
