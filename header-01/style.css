@@ -1,0 +1,133 @@
+/* 去除默认的样式 */
+html, body {
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+    box-sizing: border-box;
+}
+ul {
+    list-style-type: none;
+}
+/* ends */
+
+
+.header {
+    zoom: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* ---------------- 左边栏样式 ---------------- */
+.left-entry {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.left-entry-item {
+    margin-right: 10px;
+}
+/* ---------------- Ends ---------------- */
+
+
+/* ---------------- 搜索框样式 ---------------- */
+.center-search-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* 设置长宽高、内边距 */
+    max-width: 500px;
+    min-width: 200px;
+    padding: 0 14px; 
+
+    flex-grow: 1;
+}
+
+
+.nav-searchform {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    background-color: rgb(243, 242, 242);
+
+    border-radius: 20px;    /* 圆角 */
+}
+
+.nav-search-content {
+    flex-grow: 1;
+    background-color: rgb(243, 242, 242);
+
+    margin: 10px;
+    border-radius: 20px;    /* 圆角 */
+}
+
+.nav-search-input {
+    flex-grow: 1;
+    outline: none;
+
+    width: 100%;
+    border: none;
+    padding: 10px;
+    font-size: 16px; /* Adjust based on your design */
+    background-color: inherit;  /* 使输入框与父盒子的颜色一致 */
+}
+
+/* 点击输入框后发生变化 */
+.nav-search-input:focus {
+    outline: none;
+    border-color: inherit;
+    background-color: rgb(211, 211, 211);
+}
+
+.nav-search-btn {
+    cursor: pointer;
+    padding: 10px;
+    background-color: inherit;  /* 使其与父盒子的颜色一致 */
+    border: none;
+}
+/* ---------------- Ends ---------------- */
+
+
+/* ----------------右边栏样式 ---------------- */
+.right-entry {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.right-entry-item {
+    display: flex;
+    margin-right: 10px;
+    flex-direction: column; /* 让图标垂直于文字排布 */
+    align-items: center;    /* 图标竖向对齐文字 */
+}
+
+.summit-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: 16px;
+    width: 90px;
+    height: 34px;
+    border-radius: 8px;
+    border: none;
+
+    background: #fb7299;
+    color: #fff;
+
+    text-align: center;
+    font-size: 14px;
+    line-height: 20px;
+    cursor: pointer;
+
+    transition: background-color .3s;
+}
+
+.summit-button:hover {
+    background-color: #fc8bab;
+}
+/* ---------------- Ends ---------------- */
